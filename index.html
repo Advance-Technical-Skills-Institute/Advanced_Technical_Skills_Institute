@@ -82,64 +82,79 @@
       background: var(--accent-red-soft);
     }
 
-    /* HERO */
+    /* HERO (USPs BOX) */
     .hero {
       max-width: 1080px;
       margin: 0 auto;
-      padding: 56px 20px 24px;
-    }
-    .hero-kicker {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-red);
-      margin-bottom: 8px;
-    }
-    .hero h1 {
-      font-size: 30px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .hero h1 span {
-      color: var(--accent-red);
-    }
-    .hero p {
-      font-size: 14px;
-      color: var(--text-light);
-      max-width: 520px;
-      margin-bottom: 16px;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 13px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      background: var(--accent-gradient);
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(255,59,59,0.32);
-      transition: var(--transition-fast);
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(255,59,59,0.4);
-    }
-    .hero-note {
-      font-size: 11px;
-      color: var(--text-light);
+      padding: 18px 20px 10px;
     }
 
+    .usp-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      padding: 20px 24px;
+      border: 1px solid rgba(255, 148, 148, 0.3);
+      box-shadow: 0 14px 30px rgba(248, 113, 113, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: var(--text-dark);
+      font-size: 12px;
+    }
+    .usp-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .usp-sub {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .usp-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 11px;
+    }
+    .usp-item {
+      background: rgba(255, 251, 251, 0.95);
+      border-radius: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(254, 202, 202, 0.5);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(248, 113, 113, 0.08);
+      transition: var(--transition-fast);
+    }
+    .usp-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(248, 113, 113, 0.15);
+      border-color: rgba(248, 113, 113, 0.4);
+    }
+    .usp-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-gradient);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .usp-label {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+    .usp-detail {
+      font-size: 10px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
     /* MAIN FLOW */
     section.flow {
       max-width: 1080px;
@@ -147,14 +162,14 @@
       padding: 0 20px;
     }
     .section-label {
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent-red);
       margin-bottom: 4px;
     }
     .section-title {
-      font-size: 22px;
+      font-size: 32px;
       font-weight: 600;
       margin-bottom: 4px;
     }
@@ -406,7 +421,7 @@
     .form-footer {
       margin-top: 6px;
       font-size: 9px;
-      color: #6b7280;
+      color: #cbd0d9;
     }
 
     /* Bigger, clearer status line */
@@ -494,9 +509,11 @@
     @media (max-width: 900px) {
       header { padding: 10px 16px; }
       nav { display: none; }
+      .usp-list {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 640px) {
-      .hero h1 { font-size: 24px; }
       .trade-grid { grid-template-columns: 1fr; }
       .plans-grid { grid-template-columns: 1fr; }
       footer {
@@ -511,7 +528,7 @@
   <!-- HEADER -->
   <header>
     <div class="brand-wrap">
-      <img src="logo.png.png" alt="The Institute Logo" />
+      <img src="Logo 7 With No Background.png" alt="The Institute Logo" />
       <div>
         <div class="brand-title">THE INSTITUTE</div>
         <div class="brand-sub">Electrical & Welding • Admissions</div>
@@ -520,31 +537,43 @@
     <nav>
       <a href="#top">Home</a>
       <a href="#flow">Apply</a>
-      <!-- Start Application button removed -->
     </nav>
   </header>
 
-  <!-- HERO -->
+
   <section id="top" class="hero">
-    <div>
-      <div class="hero-kicker">For Students & Parents</div>
-      <h1>
-        One simple flow to join <span>Electrical</span> or <span>Welding</span>.
-      </h1>
-      <p>
-        Choose the trade, pick a 3 / 6 / 12 month plan, and submit a short form.
-        Minimal steps. Clear information. No clutter.
-      </p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="#flow" id="begin-3steps-btn">Begin in 3 steps →</a>
+    <div class="usp-card">
+      <div class="usp-title">WHY A.T.S.I STANDS OUT ?</div>
+      <div class="usp-sub">
+        Built to Global Trade School Standards — Not a Coaching Centre.
       </div>
-      <div class="hero-note">
-        Higher plans cover deeper syllabus, more practice time, and better job-readiness.
+      <div class="usp-list">
+        <div class="usp-item">
+          <span class="usp-dot"></span>
+          <div>
+            <div class="usp-label">International Track</div>
+            <div class="usp-detail">Curriculum Engineered for Global Employability.</div>
+          </div>
+        </div>
+        <div class="usp-item">
+          <span class="usp-dot"></span>
+          <div>
+            <div class="usp-label">12:1 Faculty Ratio</div>
+            <div class="usp-detail">Elite Trainer Ratio for Precision Skill Development</div>
+          </div>
+        </div>
+        <div class="usp-item">
+          <span class="usp-dot"></span>
+          <div>
+            <div class="usp-label">2:1 Workstation Ratio </div>
+            <div class="usp-detail">A Strict 2:1 Workstation Ratio — Designed for
+              uninterrupted skill-building.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MAIN FLOW -->
   <section id="flow" class="flow">
     <div class="section-label">Admission Flow</div>
     <div class="section-title">Choose trade → Choose plan → Share details</div>
@@ -808,8 +837,8 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
     // ========= CONFIGURE SUPABASE =========
-    const SUPABASE_URL = "https://wzjvkhxjlkzkhhueijac.supabase.co";        // e.g. https://wzjvkhxjlkzkhhueijac.supabase.co
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6anZraHhqbGt6a2hodWVpamFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0OTA0NzcsImV4cCI6MjA3OTA2NjQ3N30.AXMzMLqGJ_MCb9kgFhxjrX1IVfW-CMZ1bWucP_77daQ";
+    const SUPABASE_URL = "YOUR_SUPABASE_URL";        // e.g. https://wzjvkhxjlkzkhhueijac.supabase.co
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
     const TABLE_NAME = "institute_leads";
 
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -831,25 +860,8 @@
     const successModal = document.getElementById("success-modal");
     const successCloseBtn = document.getElementById("success-close-btn");
 
-    // Smooth scroll for "Begin in 3 steps"
-    const beginBtn = document.getElementById("begin-3steps-btn");
-    if (beginBtn) {
-      beginBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const flow = document.getElementById("flow");
-        if (flow) {
-          flow.scrollIntoView({ behavior: "smooth", block: "start" });
-          // small extra offset so content is nicely framed
-          setTimeout(() => {
-            window.scrollBy(0, -20);
-          }, 500);
-        }
-      });
-    }
-
     function openSuccessModal() {
       successModal.classList.add("visible");
-      // auto-close after 4 seconds
       setTimeout(() => {
         successModal.classList.remove("visible");
       }, 4000);
@@ -905,7 +917,7 @@
 
         formCard.classList.add("visible");
         formCard.scrollIntoView({ behavior: "smooth", block: "start" });
-        setTimeout(() => window.scrollBy(0, -10), 400); // small extra scroll adjustment
+        setTimeout(() => window.scrollBy(0, -10), 400);
       });
     });
 
@@ -931,14 +943,12 @@
       const accommodationInput = document.querySelector('input[name="accommodation"]:checked');
       const accommodation = accommodationInput ? accommodationInput.value : null;
 
-      // all fields compulsory
       if (!name || !mobile || !state || !city || !degree || !accommodation) {
         statusMsg.textContent = "Please fill all required fields.";
         statusMsg.classList.add("error");
         return;
       }
 
-      // strict 10-digit mobile check
       if (!/^\d{10}$/.test(mobile)) {
         statusMsg.textContent = "Please enter a valid 10-digit mobile number.";
         statusMsg.classList.add("error");
