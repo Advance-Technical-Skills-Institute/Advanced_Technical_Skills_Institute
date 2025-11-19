@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE INSTITUTE — Electrical & Welding Admissions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent-red: #ff3b3b;
+      --accent-red-soft: #ffe7e7;
+      --accent-gradient: linear-gradient(90deg, #ff3b3b, #ff7070);
+      --text-dark: #111827;
+      --text-light: #6b7280;
+      --bg-main: radial-gradient(circle at top left, #fff3f3, #f9fafb 40%, #ffffff 100%);
+      --radius-xl: 26px;
+      --transition-fast: 0.28s ease;
+      --glass-light: rgba(255, 255, 255, 0.78);
+      --glass-border: rgba(255, 255, 255, 0.9);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 32px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-wrap img {
+      height: 38px;
+      width: auto;
+    }
+    .brand-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand-sub {
+      font-size: 10px;
+      color: var(--text-light);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    nav a {
+      font-size: 13px;
+      color: #6b7280;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: var(--transition-fast);
+    }
+    nav a:hover {
+      color: var(--accent-red);
+      background: var(--accent-red-soft);
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 56px 20px 24px;
+    }
+    .hero-kicker {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-red);
+      margin-bottom: 8px;
+    }
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hero h1 span {
+      color: var(--accent-red);
+    }
+    .hero p {
+      font-size: 14px;
+      color: var(--text-light);
+      max-width: 520px;
+      margin-bottom: 16px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 13px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      background: var(--accent-gradient);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(255,59,59,0.32);
+      transition: var(--transition-fast);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(255,59,59,0.4);
+    }
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    /* MAIN FLOW */
+    section.flow {
+      max-width: 1080px;
+      margin: 12px auto 50px;
+      padding: 0 20px;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-red);
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .section-lede {
+      font-size: 13px;
+      color: var(--text-light);
+      max-width: 640px;
+      margin-bottom: 16px;
+    }
+
+    .interactive-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-heading {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .step-heading span {
+      color: var(--accent-red);
+      font-weight: 600;
+    }
+
+    /* STEP 1: TRADE CHOICE – same feel as buttons */
+    .trade-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .trade-card {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 148, 148, 0.9);
+      background: var(--accent-gradient);
+      color: #ffffff;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 12px 12px 10px;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      box-shadow: 0 12px 28px rgba(248, 113, 113, 0.55);
+    }
+    .trade-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(248, 113, 113, 0.75);
+      border-color: #ffffff;
+    }
+    .trade-card.active {
+      border-color: #ffffff;
+      box-shadow: 0 22px 48px rgba(248, 113, 113, 0.9);
+    }
+    .trade-name {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: #ffffff;
+    }
+    .trade-tagline {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* STEP 2: PLANS */
+    .plans-wrapper {
+      border-radius: 20px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 12px 12px 10px;
+      box-shadow: 0 14px 30px rgba(148,163,184,0.3);
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .plan-card {
+      border-radius: 16px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(229,231,235,0.9);
+      padding: 10px 11px 9px;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 11px;
+      box-shadow: 0 10px 24px rgba(148,163,184,0.25);
+    }
+    .plan-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(148,163,184,0.38);
+      border-color: #fecaca;
+    }
+    .plan-card.active {
+      border-color: var(--accent-red);
+      box-shadow: 0 18px 40px rgba(248,113,113,0.5);
+    }
+    .plan-duration {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+    }
+    .plan-price {
+      font-size: 16px;
+      font-weight: 700;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .plan-note {
+      font-size: 10px;
+      color: #6b7280;
+    }
+    .plan-points {
+      margin-top: 4px;
+      padding-left: 14px;
+      font-size: 10px;
+      color: #4b5563;
+    }
+    .plan-points li {
+      margin-bottom: 2px;
+    }
+    .plans-hint {
+      font-size: 10px;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    /* STEP 3: FORM (GLASS) */
+    .form-card {
+      border-radius: 20px;
+      background: var(--glass-light);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: var(--text-dark);
+      padding: 14px 14px 12px;
+      box-shadow: 0 18px 40px rgba(148,163,184,0.45);
+      font-size: 11px;
+      display: none;
+    }
+    .form-card.visible {
+      display: block;
+    }
+    .form-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .form-sub {
+      font-size: 10px;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .field label {
+      font-size: 10px;
+      color: var(--text-dark);
+    }
+    .field small {
+      font-size: 9px;
+      color: #6b7280;
+    }
+    .field input,
+    .field select {
+      border-radius: 9px;
+      border: 1px solid rgba(209,213,219,0.9);
+      padding: 7px 8px;
+      background: rgba(255,255,255,0.9);
+      color: var(--text-dark);
+      font-size: 11px;
+      outline: none;
+      transition: var(--transition-fast);
+    }
+    .field input::placeholder {
+      color: #9ca3af;
+    }
+    .field input:focus,
+    .field select:focus {
+      border-color: #f97373;
+      box-shadow: 0 0 0 1px rgba(248,113,113,0.35);
+      background: #ffffff;
+    }
+
+    .selection-note {
+      font-size: 10px;
+      color: #6b7280;
+      margin: 2px 0 4px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(254, 226, 226, 0.6);
+    }
+
+    .accommodation-options {
+      display: flex;
+      gap: 10px;
+      font-size: 10px;
+      align-items: center;
+    }
+    .accommodation-options label {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 4px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: none;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(248,113,113,0.6);
+      transition: var(--transition-fast);
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(248,113,113,0.8);
+    }
+
+    .form-footer {
+      margin-top: 6px;
+      font-size: 9px;
+      color: #6b7280;
+    }
+
+    /* Bigger, clearer status line */
+    .status-msg {
+      min-height: 18px;
+      margin-bottom: 4px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .status-msg.success { color: #16a34a; }
+    .status-msg.error { color: #dc2626; }
+
+    footer {
+      margin-top: 10px;
+      padding: 18px 20px 24px;
+      border-top: 1px solid rgba(229, 231, 235, 0.9);
+      font-size: 11px;
+      color: var(--text-light);
+      display: flex;
+      justify-content: space-between;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    footer a {
+      color: var(--accent-red);
+      text-decoration: none;
+    }
+
+    /* SUCCESS POPUP */
+    .success-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+    }
+    .success-modal-backdrop.visible {
+      display: flex;
+    }
+    .success-modal {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 18px;
+      padding: 18px 20px 16px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(148,163,184,0.6);
+      font-size: 12px;
+    }
+    .success-modal h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      background: linear-gradient(90deg, #22c55e, #4ade80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .success-modal p {
+      margin-bottom: 10px;
+      color: #4b5563;
+      font-size: 11px;
+    }
+    .success-modal button {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(248,113,113,0.6);
+      transition: var(--transition-fast);
+    }
+    .success-modal button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(248,113,113,0.8);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      header { padding: 10px 16px; }
+      nav { display: none; }
+    }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 24px; }
+      .trade-grid { grid-template-columns: 1fr; }
+      .plans-grid { grid-template-columns: 1fr; }
+      footer {
+        flex-direction: column;
+        gap: 6px;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="brand-wrap">
+      <img src="logo.png.png" alt="The Institute Logo" />
+      <div>
+        <div class="brand-title">THE INSTITUTE</div>
+        <div class="brand-sub">Electrical & Welding • Admissions</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#top">Home</a>
+      <a href="#flow">Apply</a>
+      <!-- Start Application button removed -->
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="hero">
+    <div>
+      <div class="hero-kicker">For Students & Parents</div>
+      <h1>
+        One simple flow to join <span>Electrical</span> or <span>Welding</span>.
+      </h1>
+      <p>
+        Choose the trade, pick a 3 / 6 / 12 month plan, and submit a short form.
+        Minimal steps. Clear information. No clutter.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#flow" id="begin-3steps-btn">Begin in 3 steps →</a>
+      </div>
+      <div class="hero-note">
+        Higher plans cover deeper syllabus, more practice time, and better job-readiness.
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN FLOW -->
+  <section id="flow" class="flow">
+    <div class="section-label">Admission Flow</div>
+    <div class="section-title">Choose trade → Choose plan → Share details</div>
+    <div class="section-lede">
+      Start with Electrical vs Welding, then select your duration, and finally share basic contact details.
+    </div>
+
+    <div class="interactive-panel">
+      <!-- STEP 1 -->
+      <div>
+        <div class="step-heading">
+          <span>Step 1</span>
+          <small>Pick Electrical or Welding</small>
+        </div>
+        <div class="trade-grid">
+          <div class="trade-card" data-trade="Electrical">
+            <div class="trade-name">ELECTRICAL</div>
+            <div class="trade-tagline">
+              Domestic & industrial wiring, motors, panels & safety.
+            </div>
+          </div>
+          <div class="trade-card" data-trade="Welding">
+            <div class="trade-name">WELDING</div>
+            <div class="trade-tagline">
+              Structural fabrication, arc / gas welding & quality checks.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="plans-wrapper">
+        <div class="step-heading">
+          <span>Step 2</span>
+          <small>Tap a 3 / 6 / 12 month plan</small>
+        </div>
+        <div class="plans-hint" id="plans-hint">
+          First choose Electrical or Welding above. Then tap a plan below.
+        </div>
+
+        <!-- Electrical plans -->
+        <div class="plans-grid plans-group" data-group="Electrical" style="display:none;">
+          <div class="plan-card" data-duration="3 Months" data-track="Electrical">
+            <div class="plan-duration">3 months • Starter</div>
+            <div class="plan-price">₹40,000</div>
+            <div class="plan-note">Taste of the trade + strong basics.</div>
+            <ul class="plan-points">
+              <li>Basic tools, cables & electrical safety habits.</li>
+              <li>Single-phase wiring & simple lighting circuits.</li>
+              <li>Reading basic diagrams & using tester/meter.</li>
+            </ul>
+          </div>
+
+          <div class="plan-card" data-duration="6 Months" data-track="Electrical">
+            <div class="plan-duration">6 months • Core</div>
+            <div class="plan-price">₹83,000</div>
+            <div class="plan-note">Job-focused foundation for entry-level roles.</div>
+            <ul class="plan-points">
+              <li>Domestic + small industrial wiring layouts.</li>
+              <li>Motor starters, MCBs, RCCBs & fault finding.</li>
+              <li>Regular practice with real panels & equipment.</li>
+            </ul>
+          </div>
+
+          <div class="plan-card" data-duration="12 Months" data-track="Electrical">
+            <div class="plan-duration">12 months • Advanced</div>
+            <div class="plan-price">₹1,65,000</div>
+            <div class="plan-note">Deep skills for long-term electrical careers.</div>
+            <ul class="plan-points">
+              <li>Three-phase panels, distribution boards & earthing.</li>
+              <li>Motors, transformers, maintenance & testing.</li>
+              <li>Intro to PLC / automation & basic documentation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Welding plans -->
+        <div class="plans-grid plans-group" data-group="Welding" style="display:none;">
+          <div class="plan-card" data-duration="3 Months" data-track="Welding">
+            <div class="plan-duration">3 months • Starter</div>
+            <div class="plan-price">₹47,000</div>
+            <div class="plan-note">Hands-on taste of welding basics.</div>
+            <ul class="plan-points">
+              <li>Workshop safety, PPE & basic hand tools.</li>
+              <li>Gas / arc welding basics on plates & simple joints.</li>
+              <li>Reading basic welding symbols & positions.</li>
+            </ul>
+          </div>
+
+          <div class="plan-card" data-duration="6 Months" data-track="Welding">
+            <div class="plan-duration">6 months • Core</div>
+            <div class="plan-price">₹93,000</div>
+            <div class="plan-note">Solid base for fabrication & workshop jobs.</div>
+            <ul class="plan-points">
+              <li>Arc, gas, and basic MIG/TIG practice.</li>
+              <li>Cutting, fitting & small structure fabrication.</li>
+              <li>Identifying & correcting common welding defects.</li>
+            </ul>
+          </div>
+
+          <div class="plan-card" data-duration="12 Months" data-track="Welding">
+            <div class="plan-duration">12 months • Advanced</div>
+            <div class="plan-price">₹1,85,000</div>
+            <div class="plan-note">For heavy fabrication & overseas-style work.</div>
+            <ul class="plan-points">
+              <li>Structural welding in multiple positions & thickness.</li>
+              <li>Project work on frames, tanks & supports.</li>
+              <li>Quality checks & basic NDT-style inspection concepts.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: FORM -->
+      <div class="form-card" id="form-card">
+        <div class="step-heading">
+          <span>Step 3</span>
+          <small>Share student details</small>
+        </div>
+        <div class="form-title" id="form-title">Student Interest Form</div>
+        <div class="form-sub">
+          This is not final admission. We will call you with batch details, exact fees and documents required.
+        </div>
+
+        <form id="interest-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Full Name</label>
+              <input id="name" name="name" type="text" placeholder="Student full name" required />
+            </div>
+
+            <div class="field">
+              <label for="mobile">Mobile Number</label>
+              <input id="mobile" name="mobile" type="tel" placeholder="10-digit mobile" required />
+              <small>WhatsApp or primary contact number</small>
+            </div>
+
+            <div class="field">
+              <label for="state">State (India)</label>
+              <select id="state" name="state" required>
+                <option value="">Select state</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Ladakh">Ladakh</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Puducherry">Puducherry</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="city">City / Town</label>
+              <input id="city" name="city" type="text" placeholder="e.g. Pune, Coimbatore" required />
+            </div>
+
+            <div class="field">
+              <label for="degree">Last Completed Education</label>
+              <select id="degree" name="degree" required>
+                <option value="">Select option</option>
+                <option value="10th">10th Pass</option>
+                <option value="12th">12th Pass</option>
+                <option value="Diploma">Diploma</option>
+                <option value="ITI">ITI</option>
+                <option value="Graduate">Graduate</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Accommodation -->
+            <div class="field">
+              <label>Do you need accommodation / hostel?</label>
+              <div class="accommodation-options">
+                <label>
+                  <input type="radio" name="accommodation" value="yes" required />
+                  Yes
+                </label>
+                <label>
+                  <input type="radio" name="accommodation" value="no" />
+                  No
+                </label>
+              </div>
+            </div>
+
+            <!-- Selection note + summary -->
+            <div class="selection-note">
+              You have selected the following course details. Please recheck before submitting.
+            </div>
+
+            <div class="field">
+              <label>Chosen Trade</label>
+              <input id="selected-trade" type="text" readonly placeholder="Select Electrical / Welding above" />
+            </div>
+
+            <div class="field">
+              <label>Chosen Plan</label>
+              <input id="selected-plan" type="text" readonly placeholder="Select 3 / 6 / 12 month plan above" />
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Interest</button>
+
+          <div class="form-footer">
+            <div class="status-msg" id="status-msg"></div>
+            <div>
+              Note: Details are stored securely in our Supabase database. You can request removal at any time.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2025 THE INSTITUTE. Electrical & Welding Admissions.</div>
+    <div><a href="#top">Back to top</a></div>
+  </footer>
+
+  <!-- SUCCESS POPUP -->
+  <div class="success-modal-backdrop" id="success-modal">
+    <div class="success-modal">
+      <h3>Thanks for submitting! 🎉</h3>
+      <p>
+        Your interest has been recorded successfully.<br />
+        Our team will reach out soon with batch and admission details.
+      </p>
+      <button type="button" id="success-close-btn">Okay, got it</button>
+    </div>
+  </div>
+
+  <!-- Supabase client -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+    // ========= CONFIGURE SUPABASE =========
+    const SUPABASE_URL = "https://wzjvkhxjlkzkhhueijac.supabase.co";        // e.g. https://wzjvkhxjlkzkhhueijac.supabase.co
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6anZraHhqbGt6a2hodWVpamFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0OTA0NzcsImV4cCI6MjA3OTA2NjQ3N30.AXMzMLqGJ_MCb9kgFhxjrX1IVfW-CMZ1bWucP_77daQ";
+    const TABLE_NAME = "institute_leads";
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let selectedTrade = null;
+    let selectedDuration = null;
+
+    const tradeCards = document.querySelectorAll(".trade-card");
+    const planGroups = document.querySelectorAll(".plans-group");
+    const planCards = document.querySelectorAll(".plan-card");
+
+    const plansHint = document.getElementById("plans-hint");
+    const formCard = document.getElementById("form-card");
+    const formTitle = document.getElementById("form-title");
+    const tradeInput = document.getElementById("selected-trade");
+    const planInput = document.getElementById("selected-plan");
+    const statusMsg = document.getElementById("status-msg");
+
+    const successModal = document.getElementById("success-modal");
+    const successCloseBtn = document.getElementById("success-close-btn");
+
+    // Smooth scroll for "Begin in 3 steps"
+    const beginBtn = document.getElementById("begin-3steps-btn");
+    if (beginBtn) {
+      beginBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const flow = document.getElementById("flow");
+        if (flow) {
+          flow.scrollIntoView({ behavior: "smooth", block: "start" });
+          // small extra offset so content is nicely framed
+          setTimeout(() => {
+            window.scrollBy(0, -20);
+          }, 500);
+        }
+      });
+    }
+
+    function openSuccessModal() {
+      successModal.classList.add("visible");
+      // auto-close after 4 seconds
+      setTimeout(() => {
+        successModal.classList.remove("visible");
+      }, 4000);
+    }
+
+    successCloseBtn.addEventListener("click", () => {
+      successModal.classList.remove("visible");
+    });
+
+    // STEP 1: Trade selection
+    tradeCards.forEach(card => {
+      card.addEventListener("click", () => {
+        selectedTrade = card.dataset.trade;
+
+        tradeCards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+
+        planGroups.forEach(group => {
+          if (group.dataset.group === selectedTrade) {
+            group.style.display = "grid";
+          } else {
+            group.style.display = "none";
+          }
+        });
+
+        selectedDuration = null;
+        planCards.forEach(p => p.classList.remove("active"));
+        planInput.value = "";
+        statusMsg.textContent = "";
+        statusMsg.className = "status-msg";
+
+        tradeInput.value = selectedTrade;
+        plansHint.textContent = "Now select 3, 6 or 12 month plan for " + selectedTrade + ".";
+      });
+    });
+
+    // STEP 2: Plan selection
+    planCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const cardTrade = card.dataset.track;
+        if (!selectedTrade || cardTrade !== selectedTrade) {
+          plansHint.textContent = "Please select " + cardTrade + " above first.";
+          return;
+        }
+
+        selectedDuration = card.dataset.duration;
+
+        planCards.forEach(p => p.classList.remove("active"));
+        card.classList.add("active");
+
+        planInput.value = selectedDuration;
+        formTitle.textContent = selectedTrade + " • " + selectedDuration + " interest form";
+
+        formCard.classList.add("visible");
+        formCard.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => window.scrollBy(0, -10), 400); // small extra scroll adjustment
+      });
+    });
+
+    // STEP 3: Submit to Supabase
+    const form = document.getElementById("interest-form");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusMsg.textContent = "";
+      statusMsg.className = "status-msg";
+
+      if (!selectedTrade || !selectedDuration) {
+        statusMsg.textContent = "Please select a trade and a plan first.";
+        statusMsg.classList.add("error");
+        return;
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const state = document.getElementById("state").value;
+      const city = document.getElementById("city").value.trim();
+      const degree = document.getElementById("degree").value;
+      const accommodationInput = document.querySelector('input[name="accommodation"]:checked');
+      const accommodation = accommodationInput ? accommodationInput.value : null;
+
+      // all fields compulsory
+      if (!name || !mobile || !state || !city || !degree || !accommodation) {
+        statusMsg.textContent = "Please fill all required fields.";
+        statusMsg.classList.add("error");
+        return;
+      }
+
+      // strict 10-digit mobile check
+      if (!/^\d{10}$/.test(mobile)) {
+        statusMsg.textContent = "Please enter a valid 10-digit mobile number.";
+        statusMsg.classList.add("error");
+        return;
+      }
+
+      statusMsg.textContent = "Submitting...";
+      statusMsg.className = "status-msg";
+
+      try {
+        const { data, error } = await supabaseClient
+          .from(TABLE_NAME)
+          .insert([
+            {
+              name: name,
+              mobile: mobile,
+              state: state,
+              city: city,
+              last_degree: degree,
+              interested_course: selectedTrade,
+              duration: selectedDuration,
+              accommodation_needed: accommodation === "yes",
+              created_at: new Date().toISOString()
+            }
+          ]);
+
+        if (error) {
+          console.error(error);
+          statusMsg.textContent = "Something went wrong while saving your details. Please try again.";
+          statusMsg.classList.add("error");
+        } else {
+          statusMsg.textContent = "Thank you! Your interest is submitted. Our team will contact you soon.";
+          statusMsg.classList.add("success");
+          form.reset();
+          openSuccessModal();
+        }
+      } catch (err) {
+        console.error(err);
+        statusMsg.textContent = "Unexpected error occurred. Please try again.";
+        statusMsg.classList.add("error");
+      }
+    });
+  </script>
+</body>
+</html>
