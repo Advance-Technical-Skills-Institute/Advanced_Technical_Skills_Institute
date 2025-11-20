@@ -82,7 +82,7 @@
       background: var(--accent-red-soft);
     }
 
-    /* HERO / USPs – light pink card like screenshot */
+    /* HERO / USPs – light pink card */
     .hero {
       max-width: 1180px;
       margin: 0 auto;
@@ -146,7 +146,7 @@
       color: #6b7280;
     }
 
-    /* MAIN FLOW SECTION – bigger & more like its own section */
+    /* MAIN FLOW SECTION */
     section.flow {
       max-width: 1180px;
       margin: 38px auto 50px;
@@ -197,7 +197,6 @@
       font-weight: 600;
     }
 
-    /* STEP BLOCKS */
     .step-block {
       background: rgba(255,255,255,0.92);
       border-radius: 24px;
@@ -534,7 +533,7 @@
   <!-- HEADER -->
   <header>
     <div class="brand-wrap">
-      <img src="logo.png.png" alt="The Institute Logo" />
+      <img src="Logo 7 With No Background.png" alt="The Institute Logo" />
       <div>
         <div class="brand-title">THE INSTITUTE</div>
         <div class="brand-sub">Electrical & Welding • Admissions</div>
@@ -546,7 +545,7 @@
     </nav>
   </header>
 
-  <!-- HERO / USPs (now white/pink + red like screenshot) -->
+  <!-- HERO / USPs -->
   <section id="top" class="hero">
     <div class="usp-card">
       <div class="usp-title">WHY A.T.S.I STANDS OUT ?</div>
@@ -728,6 +727,7 @@
                 <option value="Assam">Assam</option>
                 <option value="Bihar">Bihar</option>
                 <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Delhi">Delhi</option>
                 <option value="Goa">Goa</option>
                 <option value="Gujarat">Gujarat</option>
                 <option value="Haryana">Haryana</option>
@@ -754,7 +754,6 @@
                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                 <option value="Chandigarh">Chandigarh</option>
                 <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-                <option value="Delhi">Delhi</option>
                 <option value="Jammu and Kashmir">Jammu and Kashmir</option>
                 <option value="Ladakh">Ladakh</option>
                 <option value="Lakshadweep">Lakshadweep</option>
@@ -778,6 +777,16 @@
                 <option value="Graduate">Graduate</option>
                 <option value="Other">Other</option>
               </select>
+            </div>
+
+            <div class="field" id="degree-other-wrapper" style="display:none;">
+              <label for="degree-other">Please specify your education</label>
+              <input
+                id="degree-other"
+                name="degree_other"
+                type="text"
+                placeholder="e.g. 9th pass, Dropout after 12th, etc."
+              />
             </div>
 
             <!-- Accommodation -->
@@ -845,7 +854,7 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
     // ========= CONFIGURE SUPABASE =========
-    const SUPABASE_URL = "https://wzjvkhxjlkzkhhueijac.supabase.co";        // e.g. https://wzjvkhxjlkzkhhueijac.supabase.co
+    const SUPABASE_URL = "https://wzjvkhxjlkzkhhueijac.supabase.co";        // e.g. https://xxxx.supabase.co
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6anZraHhqbGt6a2hodWVpamFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0OTA0NzcsImV4cCI6MjA3OTA2NjQ3N30.AXMzMLqGJ_MCb9kgFhxjrX1IVfW-CMZ1bWucP_77daQ";
     const TABLE_NAME = "institute_leads";
 
@@ -865,6 +874,10 @@
     const planInput = document.getElementById("selected-plan");
     const statusMsg = document.getElementById("status-msg");
 
+    const degreeSelect = document.getElementById("degree");
+    const degreeOtherWrapper = document.getElementById("degree-other-wrapper");
+    const degreeOtherInput = document.getElementById("degree-other");
+
     const successModal = document.getElementById("success-modal");
     const successCloseBtn = document.getElementById("success-close-btn");
 
@@ -877,6 +890,16 @@
 
     successCloseBtn.addEventListener("click", () => {
       successModal.classList.remove("visible");
+    });
+
+    // Show / hide "Other" education field
+    degreeSelect.addEventListener("change", () => {
+      if (degreeSelect.value === "Other") {
+        degreeOtherWrapper.style.display = "block";
+      } else {
+        degreeOtherWrapper.style.display = "none";
+        degreeOtherInput.value = "";
+      }
     });
 
     // STEP 1: Trade selection
@@ -947,12 +970,19 @@
       const mobile = document.getElementById("mobile").value.trim();
       const state = document.getElementById("state").value;
       const city = document.getElementById("city").value.trim();
-      const degree = document.getElementById("degree").value;
+      const degreeValue = degreeSelect.value;
+      const degreeOtherValue = degreeOtherInput.value.trim();
       const accommodationInput = document.querySelector('input[name="accommodation"]:checked');
       const accommodation = accommodationInput ? accommodationInput.value : null;
 
-      if (!name || !mobile || !state || !city || !degree || !accommodation) {
+      if (!name || !mobile || !state || !city || !degreeValue || !accommodation) {
         statusMsg.textContent = "Please fill all required fields.";
+        statusMsg.classList.add("error");
+        return;
+      }
+
+      if (degreeValue === "Other" && !degreeOtherValue) {
+        statusMsg.textContent = "Please specify your education in the text box.";
         statusMsg.classList.add("error");
         return;
       }
@@ -961,6 +991,12 @@
         statusMsg.textContent = "Please enter a valid 10-digit mobile number.";
         statusMsg.classList.add("error");
         return;
+      }
+
+      let degreeToStore = degreeValue;
+      let degreeOtherToStore = null;
+      if (degreeValue === "Other") {
+        degreeOtherToStore = degreeOtherValue;
       }
 
       statusMsg.textContent = "Submitting...";
@@ -975,7 +1011,8 @@
               mobile: mobile,
               state: state,
               city: city,
-              last_degree: degree,
+              last_degree: degreeToStore,
+              degree_other: degreeOtherToStore,
               interested_course: selectedTrade,
               duration: selectedDuration,
               accommodation_needed: accommodation === "yes",
